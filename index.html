@@ -2,11 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  
-  <title>Vestments for His Servants — Altar Server Campaign</title>
-  <meta name="description" content="Support our mission to provide dignified vestments for altar servers. Help us reach our goal of 85,000 KSh for new cassocks and albs.">
-  <meta name="google-site-verification" content="8Nwdmd_yw1kmm4aYq5xo_J717s7SVnYe2DHws9q2Pe0" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vestments for His Servants — Altar Server Campaign</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -70,6 +67,7 @@
         radial-gradient(ellipse 60% 80% at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 60%),
         linear-gradient(170deg, #0E0804 0%, #1A0C0A 40%, #0A0502 100%);
     }
+    /* Decorative cross overlay */
     .hero-bg::after {
       content: '';
       position: absolute; inset: 0;
@@ -127,8 +125,21 @@
     .scroll-hint span { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 3px; }
     .scroll-hint svg { width: 18px; }
 
+    /* ─── DIVIDER ─── */
+    .ornament-divider {
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+      padding: 0 20px; margin: 20px auto 0; max-width: 500px;
+    }
+    .ornament-divider::before, .ornament-divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .ornament-divider::after { background: linear-gradient(to left, transparent, var(--gold)); }
+    .ornament-divider .icon { color: var(--gold); font-size: 18px; }
+
     /* ─── SECTIONS ─── */
     section { padding: 90px 20px; max-width: 1100px; margin: 0 auto; }
+
     .section-tag {
       font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 5px;
       text-transform: uppercase; color: var(--gold); opacity: 0.7;
@@ -143,247 +154,794 @@
     p { color: var(--parchment); margin-bottom: 16px; }
 
     /* ─── STORY GRID ─── */
-    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .story-image-wrap { position: relative; }
+    .story-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .story-image-wrap {
+      position: relative;
+    }
     .story-image-frame {
       width: 100%; aspect-ratio: 4/5;
-      background: linear-gradient(135deg, var(--crimson-dk) 0%, #2A0C12 50%, var(--ink) 100%);
+      background:
+        linear-gradient(135deg, var(--crimson-dk) 0%, #2A0C12 50%, var(--ink) 100%);
       border: 1px solid rgba(201,168,76,0.3);
       display: flex; align-items: center; justify-content: center;
       font-size: 80px; color: rgba(201,168,76,0.15);
       position: relative; overflow: hidden;
     }
-    .vestment-icon { font-size: 90px; z-index: 1; opacity: 0.5; }
+    .story-image-frame::before {
+      content: '✝'; font-size: 140px;
+      color: rgba(201,168,76,0.07);
+      position: absolute;
+    }
+    .story-image-frame .vestment-icon {
+      font-size: 90px; z-index: 1; opacity: 0.5;
+    }
+    .story-image-frame::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,5,2,0.5) 0%, transparent 60%);
+    }
+    .frame-caption {
+      font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 3px;
+      color: var(--gold); opacity: 0.6; text-align: center; margin-top: 12px;
+    }
+    .corner-ornament {
+      position: absolute; width: 20px; height: 20px;
+      border-color: var(--gold); border-style: solid; opacity: 0.5;
+    }
+    .corner-ornament.tl { top: -6px; left: -6px; border-width: 2px 0 0 2px; }
+    .corner-ornament.tr { top: -6px; right: -6px; border-width: 2px 2px 0 0; }
+    .corner-ornament.bl { bottom: -6px; left: -6px; border-width: 0 0 2px 2px; }
+    .corner-ornament.br { bottom: -6px; right: -6px; border-width: 0 2px 2px 0; }
 
     /* ─── IMPACT STATS ─── */
     .impact-section {
       background: linear-gradient(135deg, var(--crimson-dk) 0%, #200A10 100%);
       border-top: 1px solid rgba(201,168,76,0.2);
       border-bottom: 1px solid rgba(201,168,76,0.2);
-      padding: 70px 40px; text-align: center;
+      padding: 70px 40px; max-width: 100%;
     }
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
+    .impact-inner { max-width: 1100px; margin: 0 auto; }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+      margin-top: 50px;
+    }
     .stat-card {
-      text-align: center; padding: 36px 24px; border: 1px solid rgba(201,168,76,0.2);
+      text-align: center; padding: 36px 24px;
+      border: 1px solid rgba(201,168,76,0.2);
       background: rgba(201,168,76,0.04);
+      position: relative;
     }
-    .stat-number { font-family: 'Cinzel Decorative', serif; font-size: 3rem; color: var(--gold-lt); }
-    .stat-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--parchment); }
+    .stat-card::before {
+      content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 2px; background: var(--gold);
+    }
+    .stat-number {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3rem; color: var(--gold-lt);
+      display: block; line-height: 1;
+    }
+    .stat-label {
+      font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--parchment); opacity: 0.7;
+      margin-top: 12px; display: block;
+    }
+    .stat-desc { font-size: 0.95rem; color: var(--parchment); opacity: 0.6; margin-top: 10px; }
 
     /* ─── PROGRESS ─── */
+    .progress-section { text-align: center; }
     .progress-wrap {
       max-width: 700px; margin: 50px auto 0;
-      background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.2);
+      background: rgba(201,168,76,0.05);
+      border: 1px solid rgba(201,168,76,0.2);
       padding: 40px 50px;
     }
-    .progress-bar-track { width: 100%; height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
-    .progress-bar-fill { height: 100%; width: 15%; background: var(--gold); transition: width 2s ease; }
+    .progress-meta {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 20px;
+    }
+    .progress-raised {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.2rem; color: var(--gold-lt);
+    }
+    .progress-goal {
+      font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 2px;
+      color: var(--parchment); opacity: 0.6;
+    }
+    .progress-bar-track {
+      width: 100%; height: 8px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px; overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%; width: 0;
+      background: linear-gradient(to right, var(--gold-dk), var(--gold), var(--gold-lt));
+      border-radius: 4px;
+      transition: width 2s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 0 12px rgba(201,168,76,0.5);
+    }
+    .progress-sub {
+      display: flex; justify-content: space-between; margin-top: 14px;
+      font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px;
+      color: var(--parchment); opacity: 0.55;
+    }
+    .donors-count {
+      text-align: center; margin-top: 24px;
+      font-style: italic; color: var(--parchment); opacity: 0.6;
+    }
 
     /* ─── DONATION FORM ─── */
-    .form-section { background: var(--ink); padding: 80px 20px; border-top: 1px solid rgba(201,168,76,0.15); }
+    .form-section {
+      background: var(--ink);
+      padding: 80px 20px;
+      max-width: 100%;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
     .form-inner { max-width: 680px; margin: 0 auto; }
-    .amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 32px 0 16px; }
+    .form-inner h2 { text-align: center; }
+    .form-inner .section-tag { text-align: center; display: block; }
+
+    .amount-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+      margin: 32px 0 16px;
+    }
     .amount-btn {
-      background: transparent; border: 1px solid rgba(201,168,76,0.35); color: var(--parchment);
-      font-family: 'Cinzel', serif; padding: 16px 10px; cursor: pointer; transition: all .25s;
+      background: transparent;
+      border: 1px solid rgba(201,168,76,0.35);
+      color: var(--parchment);
+      font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 1px;
+      padding: 16px 10px; cursor: pointer;
+      transition: all .25s;
     }
-    .amount-btn.active { background: rgba(201,168,76,0.12); border-color: var(--gold); color: var(--gold-lt); }
-    .form-group { margin-bottom: 20px; text-align: left; }
-    .form-group label { display: block; font-family: 'Cinzel', serif; font-size: 10px; color: var(--gold); margin-bottom: 8px; }
-    .form-group input, .form-group select {
-      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.25);
-      color: var(--ivory); padding: 14px 18px; outline: none;
+    .amount-btn:hover, .amount-btn.active {
+      background: rgba(201,168,76,0.12);
+      border-color: var(--gold);
+      color: var(--gold-lt);
     }
+    .amount-btn small {
+      display: block; font-family: 'Crimson Pro', serif;
+      font-size: 11px; font-style: italic; letter-spacing: 0; opacity: 0.6; margin-top: 4px;
+    }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-family: 'Cinzel', serif; font-size: 10px;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); opacity: 0.75; margin-bottom: 8px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.25);
+      color: var(--ivory); font-family: 'Crimson Pro', serif; font-size: 1rem;
+      padding: 14px 18px; border-radius: 1px;
+      transition: border-color .3s;
+      outline: none;
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.06);
+    }
+    .form-group select option { background: #1A0C0A; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .custom-amount-wrap {
+      display: flex; align-items: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 0 18px;
+      transition: border-color .3s;
+    }
+    .custom-amount-wrap:focus-within { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+    .custom-amount-wrap span {
+      font-family: 'Cinzel', serif; color: var(--gold); margin-right: 8px; font-size: 1rem;
+    }
+    .custom-amount-wrap input {
+      border: none; background: transparent; padding: 14px 0;
+      color: var(--ivory); font-family: 'Crimson Pro', serif; font-size: 1.1rem;
+      outline: none; flex: 1;
+    }
+
+    .checkbox-row {
+      display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px;
+    }
+    .checkbox-row input[type=checkbox] {
+      width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px;
+      accent-color: var(--gold); cursor: pointer;
+    }
+    .checkbox-row label {
+      font-family: 'Crimson Pro', serif; font-size: 0.9rem;
+      color: var(--parchment); opacity: 0.75; cursor: pointer; letter-spacing: 0;
+    }
+
     .submit-btn {
-      width: 100%; padding: 20px; background: var(--gold); color: var(--ink);
-      font-family: 'Cinzel', serif; letter-spacing: 4px; text-transform: uppercase;
-      border: none; cursor: pointer; margin-top: 12px;
+      width: 100%; padding: 20px;
+      background: linear-gradient(135deg, var(--gold-dk), var(--gold), var(--gold-lt));
+      color: var(--ink); font-family: 'Cinzel', serif;
+      font-size: 14px; letter-spacing: 4px; text-transform: uppercase;
+      border: none; cursor: pointer; border-radius: 2px;
+      box-shadow: 0 4px 30px rgba(201,168,76,0.3);
+      transition: transform .3s, box-shadow .3s; margin-top: 12px;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(201,168,76,0.45);
+    }
+    .submit-btn:active { transform: translateY(0); }
+
+    .secure-note {
+      text-align: center; margin-top: 16px;
+      font-size: 0.82rem; color: var(--parchment); opacity: 0.45;
+      font-family: 'Cinzel', serif; letter-spacing: 1px;
     }
 
     /* ─── SUCCESS ─── */
     .success-overlay {
       display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(10,5,2,0.97); flex-direction: column; align-items: center; justify-content: center;
+      background: rgba(10,5,2,0.97);
+      flex-direction: column; align-items: center; justify-content: center;
       text-align: center; padding: 40px;
     }
-    .success-overlay.show { display: flex; }
+    .success-overlay.show { display: flex; animation: fadeIn .5s ease; }
+    .success-icon { font-size: 64px; margin-bottom: 24px; animation: pulse 2s infinite; }
+    .success-overlay h2 { color: var(--gold-lt); margin-bottom: 16px; }
+    .success-overlay p { max-width: 440px; color: var(--parchment); opacity: 0.8; }
+    .success-close {
+      margin-top: 40px; padding: 14px 40px;
+      border: 1px solid var(--gold); background: transparent;
+      color: var(--gold); font-family: 'Cinzel', serif;
+      font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+      cursor: pointer; transition: background .3s, color .3s;
+    }
+    .success-close:hover { background: var(--gold); color: var(--ink); }
+
+    /* ─── VESTMENTS ─── */
+    .vestment-cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;
+      margin-top: 48px;
+    }
+    .vestment-card {
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 32px 24px; text-align: center;
+      background: rgba(201,168,76,0.02);
+      transition: border-color .3s, background .3s;
+      position: relative; overflow: hidden;
+    }
+    .vestment-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.06), transparent);
+      opacity: 0; transition: opacity .3s;
+    }
+    .vestment-card:hover { border-color: rgba(201,168,76,0.5); }
+    .vestment-card:hover::after { opacity: 1; }
+    .vestment-card .vc-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+    .vestment-card h3 {
+      font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold-lt); margin-bottom: 8px;
+    }
+    .vestment-card p { font-size: 0.92rem; opacity: 0.65; margin: 0; }
+    .vestment-card .vc-price {
+      display: inline-block; margin-top: 16px;
+      font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px;
+      color: var(--gold); border: 1px solid rgba(201,168,76,0.3);
+      padding: 5px 14px;
+    }
 
     /* ─── FAQ ─── */
-    .faq-item { border-bottom: 1px solid rgba(201,168,76,0.15); text-align: left; }
-    .faq-q { width: 100%; background: transparent; border: none; padding: 22px 0; cursor: pointer; color: var(--ivory); font-family: 'Cinzel', serif; text-align: left; }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; color: var(--parchment); opacity: 0.75; }
+    .faq-list { margin-top: 44px; }
+    .faq-item { border-bottom: 1px solid rgba(201,168,76,0.15); }
+    .faq-q {
+      width: 100%; background: transparent; border: none;
+      text-align: left; padding: 22px 0; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 1px;
+      color: var(--ivory); transition: color .25s;
+    }
+    .faq-q:hover { color: var(--gold-lt); }
+    .faq-q .faq-arrow {
+      color: var(--gold); font-size: 18px; transition: transform .3s; flex-shrink: 0;
+    }
+    .faq-q.open .faq-arrow { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s;
+      color: var(--parchment); opacity: 0.75; font-size: 0.97rem;
+    }
     .faq-a.open { max-height: 200px; padding-bottom: 20px; }
 
-    footer { padding: 60px 40px; text-align: center; border-top: 1px solid rgba(201,168,76,0.15); }
+    /* ─── FOOTER ─── */
+    footer {
+      background: linear-gradient(to top, #060302, var(--ink));
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding: 60px 40px 40px; text-align: center;
+    }
+    .footer-cross {
+      font-size: 32px; color: var(--gold); opacity: 0.4; display: block; margin-bottom: 20px;
+    }
+    .footer-name {
+      font-family: 'Cinzel Decorative', serif; font-size: 1.1rem;
+      color: var(--ivory-dk); margin-bottom: 10px;
+    }
+    .footer-tagline {
+      font-style: italic; color: var(--parchment); opacity: 0.45;
+      font-size: 0.9rem; margin-bottom: 30px;
+    }
+    footer small {
+      display: block; font-family: 'Cinzel', serif; font-size: 10px;
+      letter-spacing: 2px; color: var(--parchment); opacity: 0.3; margin-top: 30px;
+    }
 
-    /* ANIMATIONS */
-    @keyframes fadeDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
-    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.08); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
       .nav-links { display: none; }
-      .story-grid, .stats-grid { grid-template-columns: 1fr; }
-      .amount-grid { grid-template-columns: 1fr 1fr; }
+      .story-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; gap: 20px; }
+      .amount-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      .progress-wrap { padding: 30px 24px; }
+      section { padding: 60px 20px; }
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-logo">✝ Altar Servers Campaign</div>
   <ul class="nav-links">
     <li><a href="#story">Our Story</a></li>
+    <li><a href="#vestments">Vestments</a></li>
     <li><a href="#donate">Donate</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="cross-ornament">✦ ✝ ✦</div>
-  <p class="hero-eyebrow">A Call to Serve & Give</p>
+  <p class="hero-eyebrow">A Call to Serve &amp; Give</p>
   <h1>Vestments for<br><span>His Servants</span></h1>
-  <p class="hero-sub">Help clothe our dedicated altar servers in dignified vestments as they serve at the holy altar.</p>
+  <p class="hero-sub">Help clothe our dedicated altar servers in dignified vestments as they serve at the holy altar — a gift of reverence, faith, and belonging.</p>
   <a href="#donate" class="hero-cta">Make Your Offering</a>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
 </div>
 
-<section id="story">
+<!-- STORY -->
+<section id="story" style="max-width:1100px;margin:0 auto;padding:90px 40px;">
   <div class="story-grid reveal">
     <div>
       <span class="section-tag">Our Mission</span>
       <h2>Serving at the <span>Sacred Altar</span></h2>
-      <p>Our altar servers are the quiet pillars of every Mass. Yet many lack proper vestments—worn albs and mismatched sizes mean they cannot always present themselves with the dignity their calling deserves.</p>
-      <p>Your donation will purchase quality cassocks, surplices, and albs for our parish youth.</p>
+      <p>Our altar servers are the quiet pillars of every Mass — young men and women who arrive early, prepare the sanctuary, and assist our priests with devoted hearts. They are the hands and feet of our liturgy.</p>
+      <p>Yet many of our servers lack proper vestments — worn albs, mismatched sizes, and scarce supplies mean they cannot always present themselves with the dignity their calling deserves.</p>
+      <p>Your donation will purchase quality cassocks, surplices, albs, and accessories for every server in our parish. This is more than clothing — it is an investment in the next generation of faithful servants.</p>
+      <div class="ornament-divider" style="margin:32px 0 0;max-width:none;justify-content:flex-start;">
+        <div class="icon">✝</div>
+        <p style="margin:0;font-style:italic;font-size:0.95rem;opacity:0.6;">"Let everything be done decently and in order." — 1 Corinthians 14:40</p>
+      </div>
     </div>
     <div class="story-image-wrap">
       <div class="story-image-frame">
         <span class="vestment-icon">🕊️</span>
       </div>
+      <span class="corner-ornament tl"></span>
+      <span class="corner-ornament tr"></span>
+      <span class="corner-ornament bl"></span>
+      <span class="corner-ornament br"></span>
+      <p class="frame-caption">Serving with Faith &amp; Reverence</p>
     </div>
   </div>
 </section>
 
+<!-- IMPACT STATS -->
 <div class="impact-section">
-    <div class="reveal">
+  <div class="impact-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-tag" style="text-align:center;">The Need</span>
       <h2>By the <span>Numbers</span></h2>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <span class="stat-number">24</span>
-          <span class="stat-label">Active Servers</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">18</span>
-          <span class="stat-label">Vestments Needed</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">85K</span>
-          <span class="stat-label">KSh Goal</span>
-        </div>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <span class="stat-number">24</span>
+        <span class="stat-label">Active Altar Servers</span>
+        <p class="stat-desc">Young faithful who serve at every Mass, feast day, and special celebration</p>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">18</span>
+        <span class="stat-label">New Vestments Needed</span>
+        <p class="stat-desc">Full sets including cassock, surplice, and accessories for each server</p>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">KSh 85K</span>
+        <span class="stat-label">Total Campaign Goal</span>
+        <p class="stat-desc">Covers vestments, alterations, storage, and a reserve for new servers</p>
       </div>
     </div>
+  </div>
 </div>
 
-<section id="progress">
-  <div class="reveal" style="text-align: center;">
-    <h2>Campaign <span>Progress</span></h2>
-    <div class="progress-wrap">
-      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-        <span style="color: var(--gold-lt);">KSh 12,750</span>
-        <span>Goal: KSh 85,000</span>
-      </div>
-      <div class="progress-bar-track">
-        <div class="progress-bar-fill"></div>
-      </div>
+<!-- VESTMENTS -->
+<section id="vestments">
+  <div class="reveal" style="text-align:center;">
+    <span class="section-tag">What We Need</span>
+    <h2>The <span>Sacred Vestments</span></h2>
+    <p style="max-width:560px;margin:0 auto;">Every item serves a purpose in the liturgy. Here is exactly what your donation will help provide:</p>
+  </div>
+  <div class="vestment-cards reveal">
+    <div class="vestment-card">
+      <span class="vc-icon">👘</span>
+      <h3>Cassock</h3>
+      <p>The long black or red garment worn as the primary vestment for serving at Mass.</p>
+      <span class="vc-price">KSh 3,500 / piece</span>
+    </div>
+    <div class="vestment-card">
+      <span class="vc-icon">✨</span>
+      <h3>Surplice / Alb</h3>
+      <p>White linen overvest symbolising baptismal purity, worn over the cassock.</p>
+      <span class="vc-price">KSh 2,800 / piece</span>
+    </div>
+    <div class="vestment-card">
+      <span class="vc-icon">🕯️</span>
+      <h3>Cincture</h3>
+      <p>A rope or fabric belt tied around the alb, representing the virtue of chastity.</p>
+      <span class="vc-price">KSh 600 / piece</span>
+    </div>
+    <div class="vestment-card">
+      <span class="vc-icon">📿</span>
+      <h3>Accessories Set</h3>
+      <p>Cross, torchbearer gloves, and other items used in processions and feast days.</p>
+      <span class="vc-price">KSh 1,200 / set</span>
     </div>
   </div>
 </section>
 
+<!-- PROGRESS -->
+<section style="max-width:1100px;margin:0 auto;padding:20px 40px 80px;text-align:center;" id="progress">
+  <div class="progress-section reveal">
+    <span class="section-tag">Campaign Progress</span>
+    <h2>Together We Are <span>Reaching Our Goal</span></h2>
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span class="progress-raised" id="amountRaised">KSh 0</span>
+        <span class="progress-goal">Goal: KSh 85,000</span>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+      <div class="progress-sub">
+        <span id="pctText">0% funded</span>
+        <span id="daysLeft">Campaign Active</span>
+      </div>
+      <p class="donors-count" id="donorCount">Be the first to give — every shilling counts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DONATION FORM -->
 <div class="form-section" id="donate">
   <div class="form-inner reveal">
     <span class="section-tag">Give Today</span>
-    <h2 style="text-align: center;">Make Your <span>Sacred Offering</span></h2>
-    
-    <div style="border: 1px solid var(--gold); padding: 20px; text-align: center; margin-bottom: 30px; background: rgba(201,168,76,0.05);">
-        <p style="font-family: 'Cinzel', serif; font-size: 12px; color: var(--gold);">SEND M-PESA TO</p>
-        <h3 style="font-size: 2rem; color: var(--gold-lt);">0708 755 904</h3>
-        <p style="font-size: 0.8rem; opacity: 0.6;">Altar Servers Vestment Fund</p>
+    <h2>Make Your <span>Sacred Offering</span></h2>
+    <p style="text-align:center;opacity:0.65;margin-bottom:20px;">Choose an amount or enter your own. Every gift, large or small, clothes a servant of God.</p>
+
+    <!-- M-PESA BANNER -->
+    <div style="
+      border: 1px solid rgba(201,168,76,0.5);
+      background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(123,27,42,0.15));
+      padding: 24px 28px; margin-bottom: 28px; text-align:center; position:relative;
+    ">
+      <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+        background:var(--ink); padding:0 12px;
+        font-family:'Cinzel',serif; font-size:10px; letter-spacing:3px;
+        color:var(--gold); text-transform:uppercase; white-space:nowrap;">
+        Send M-Pesa To
+      </div>
+      <div style="font-family:'Cinzel Decorative',serif; font-size:2.2rem;
+        color:var(--gold-lt); letter-spacing:4px; margin:8px 0 4px;">
+        0708 755 904
+      </div>
+      <div style="font-family:'Cinzel',serif; font-size:11px; letter-spacing:2px;
+        color:var(--parchment); opacity:0.65; text-transform:uppercase;">
+        M-Pesa &nbsp;·&nbsp; Altar Servers Vestment Fund
+      </div>
+      <div style="margin-top:14px; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+        <a href="tel:0708755904" style="
+          display:inline-block; padding:9px 22px;
+          background:rgba(201,168,76,0.15); border:1px solid rgba(201,168,76,0.4);
+          color:var(--gold-lt); font-family:'Cinzel',serif; font-size:11px;
+          letter-spacing:2px; text-decoration:none; text-transform:uppercase;
+          transition:background .25s;
+        " onmouseover="this.style.background='rgba(201,168,76,0.28)'"
+           onmouseout="this.style.background='rgba(201,168,76,0.15)'">
+          📞 Call / Save Number
+        </a>
+        <button onclick="navigator.clipboard.writeText('0708755904').then(()=>{this.textContent='✓ Copied!';setTimeout(()=>this.textContent='📋 Copy Number',2000)})" style="
+          padding:9px 22px;
+          background:rgba(201,168,76,0.15); border:1px solid rgba(201,168,76,0.4);
+          color:var(--gold-lt); font-family:'Cinzel',serif; font-size:11px;
+          letter-spacing:2px; cursor:pointer; text-transform:uppercase;
+          transition:background .25s;
+        " onmouseover="this.style.background='rgba(201,168,76,0.28)'"
+           onmouseout="this.style.background='rgba(201,168,76,0.15)'">
+          📋 Copy Number
+        </button>
+      </div>
     </div>
 
     <div class="amount-grid">
-      <button class="amount-btn" data-amount="500">KSh 500</button>
-      <button class="amount-btn" data-amount="2800">KSh 2,800</button>
-      <button class="amount-btn" data-amount="5000">KSh 5,000</button>
+      <button class="amount-btn" data-amount="500">KSh 500<small>Cincture</small></button>
+      <button class="amount-btn" data-amount="1200">KSh 1,200<small>Accessories</small></button>
+      <button class="amount-btn" data-amount="2800">KSh 2,800<small>Surplice</small></button>
+      <button class="amount-btn" data-amount="3500">KSh 3,500<small>Cassock</small></button>
+      <button class="amount-btn" data-amount="5000">KSh 5,000<small>Full Set</small></button>
+      <button class="amount-btn" data-amount="0" id="customBtn">Custom<small>Enter amount</small></button>
+    </div>
+
+    <div class="form-group" id="customAmountGroup" style="display:none;">
+      <label>Custom Amount (KSh)</label>
+      <div class="custom-amount-wrap">
+        <span>KSh</span>
+        <input type="number" id="customAmount" placeholder="Enter amount" min="50"/>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" id="firstName" placeholder="Mary"/>
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" id="lastName" placeholder="Wanjiku"/>
+      </div>
     </div>
 
     <div class="form-group">
-      <label>Full Name</label>
-      <input type="text" placeholder="Your Name">
+      <label>Email Address</label>
+      <input type="email" id="email" placeholder="you@example.com"/>
     </div>
+
     <div class="form-group">
       <label>Phone (M-Pesa)</label>
-      <input type="tel" placeholder="07xx xxx xxx">
+      <input type="tel" id="phone" placeholder="0712 345 678"/>
+    </div>
+
+    <div class="form-group">
+      <label>Payment Method</label>
+      <select id="payMethod">
+        <option value="">— Select —</option>
+        <option value="mpesa">M-Pesa</option>
+        <option value="bank">Bank Transfer</option>
+        <option value="card">Debit / Credit Card</option>
+        <option value="cash">Cash (Parish Office)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Dedication (optional)</label>
+      <input type="text" id="dedication" placeholder="In memory of / In honour of…"/>
+    </div>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="anonymous"/>
+      <label for="anonymous">Make my donation anonymous — do not list my name publicly</label>
+    </div>
+    <div class="checkbox-row">
+      <input type="checkbox" id="updates" checked/>
+      <label for="updates">Keep me updated on the campaign progress and how my gift was used</label>
+    </div>
+    <div class="checkbox-row">
+      <input type="checkbox" id="agree"/>
+      <label for="agree">I confirm this is a voluntary gift to the Parish Altar Servers Vestment Fund</label>
     </div>
 
     <button class="submit-btn" id="submitBtn">✝ &nbsp; Complete My Donation</button>
+    <p class="secure-note">🔒 Secure &amp; Confidential &nbsp;|&nbsp; Tax-exempt gift &nbsp;|&nbsp; Receipt via email</p>
   </div>
 </div>
 
-<section id="faq">
-  <div class="reveal">
-    <h2 style="text-align: center;">Questions?</h2>
+<!-- FAQ -->
+<section id="faq" style="max-width:760px;margin:0 auto;padding:80px 40px;">
+  <div class="reveal" style="text-align:center;">
+    <span class="section-tag">Questions</span>
+    <h2>Frequently <span>Asked</span></h2>
+  </div>
+  <div class="faq-list reveal">
     <div class="faq-item">
-      <button class="faq-q">How will my donation be used? <span>+</span></button>
-      <div class="faq-a">100% of funds go directly toward purchasing and tailoring vestments for our altar servers.</div>
+      <button class="faq-q">How will my donation be used?<span class="faq-arrow">+</span></button>
+      <div class="faq-a">100% of funds raised go directly toward purchasing and tailoring vestments for our altar servers. Any surplus will be held in reserve for future altar server needs or vestment maintenance.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q">Can I pay via M-Pesa? <span>+</span></button>
-      <div class="faq-a">Yes! Send your amount to 0708 755 904, then fill in the form above so we can send your receipt.</div>
+      <button class="faq-q">Can I pay via M-Pesa?<span class="faq-arrow">+</span></button>
+      <div class="faq-a">Yes! M-Pesa is our preferred method. Simply send your amount directly to <strong style="color:var(--gold-lt);">0708 755 904</strong> via M-Pesa, then fill in the form above so we can record your donation and send you a receipt.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Will I receive a donation receipt?<span class="faq-arrow">+</span></button>
+      <div class="faq-a">Yes. Every donor will receive an email receipt within 24 hours of their donation being confirmed. If you require an official parish receipt, please contact the Parish Office.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Can I donate in someone's memory?<span class="faq-arrow">+</span></button>
+      <div class="faq-a">Absolutely. Use the "Dedication" field in the form above to include a name. Dedication donations will be acknowledged in the parish bulletin unless you choose to remain anonymous.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">When will vestments be purchased?<span class="faq-arrow">+</span></button>
+      <div class="faq-a">We plan to place our order once 70% of the goal is reached. We expect vestments to be ready for the servers within 6–8 weeks of ordering. All donors will receive an update with photos.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Who can I contact for more information?<span class="faq-arrow">+</span></button>
+      <div class="faq-a">Please contact the Parish Liturgy Coordinator or the Parish Secretary at the church office. You can also email us at altarservers@parish.ke — we will respond within 48 hours.</div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <p>Altar Servers Vestment Fund &copy; 2026</p>
+  <span class="footer-cross">✝</span>
+  <div class="footer-name">Altar Servers Vestment Campaign</div>
+  <p class="footer-tagline">"They who serve the altar shall be clothed in holiness."</p>
+  <div class="ornament-divider" style="max-width:300px;margin:0 auto 20px;">
+    <div class="icon" style="font-size:12px;">✦</div>
+  </div>
+  <p style="opacity:0.4;font-size:0.88rem;margin-bottom:0;">
+    For questions: <a href="mailto:altarservers@parish.ke" style="color:var(--gold);opacity:0.7;text-decoration:none;">altarservers@parish.ke</a>
+    &nbsp;|&nbsp; Parish Office: Mon–Fri, 8am–5pm
+  </p>
+  <small>© 2025 Parish Altar Servers Campaign. All donations are voluntary gifts to the parish.</small>
 </footer>
 
+<!-- SUCCESS OVERLAY -->
 <div class="success-overlay" id="successOverlay">
-  <div style="font-size: 50px;">✨</div>
-  <h2>Thank You</h2>
-  <p>Your generosity helps clothe our servers in dignity.</p>
-  <button onclick="document.getElementById('successOverlay').style.display='none'" style="margin-top: 20px; padding: 10px 30px; background: var(--gold); border: none;">Close</button>
+  <div class="success-icon">🙏</div>
+  <h2>God Bless You!</h2>
+  <p>Thank you for your generous offering. Please complete your M-Pesa payment now:</p>
+  <div style="
+    border:1px solid rgba(201,168,76,0.45); padding:24px 36px; margin:24px auto;
+    max-width:360px; background:rgba(201,168,76,0.07);
+  ">
+    <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;color:var(--gold);opacity:0.8;margin-bottom:8px;text-transform:uppercase;">Send M-Pesa To</div>
+    <div style="font-family:'Cinzel Decorative',serif;font-size:2rem;color:var(--gold-lt);letter-spacing:3px;">0708 755 904</div>
+    <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;color:var(--parchment);opacity:0.6;margin-top:8px;">Altar Servers Vestment Fund</div>
+    <button onclick="navigator.clipboard.writeText('0708755904').then(()=>{this.textContent='✓ Copied!';setTimeout(()=>this.textContent='📋 Copy Number',2000)})" style="
+      margin-top:16px; padding:8px 20px;
+      border:1px solid rgba(201,168,76,0.4); background:rgba(201,168,76,0.12);
+      color:var(--gold-lt); font-family:'Cinzel',serif; font-size:11px;
+      letter-spacing:2px; cursor:pointer; text-transform:uppercase;
+    ">📋 Copy Number</button>
+  </div>
+  <p style="margin-top:0;font-style:italic;opacity:0.6;max-width:400px;">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." — 2 Cor 9:7</p>
+  <button class="success-close" id="closeSuccess">Return to Page</button>
 </div>
 
 <script>
-  // Amount Selection
-  const btns = document.querySelectorAll('.amount-btn');
-  btns.forEach(btn => {
+  // ── Progress simulation ──
+  const totalGoal = 85000;
+  let currentRaised = 41250;
+  let donorNum = 47;
+
+  function updateProgress(extra = 0) {
+    const raised = currentRaised + extra;
+    const pct = Math.min((raised / totalGoal) * 100, 100);
+    document.getElementById('amountRaised').textContent = 'KSh ' + raised.toLocaleString();
+    document.getElementById('pctText').textContent = Math.round(pct) + '% funded';
+    document.getElementById('donorCount').textContent =
+      (donorNum + (extra ? 1 : 0)) + ' generous donors have given so far';
+    setTimeout(() => {
+      document.getElementById('progressBar').style.width = pct + '%';
+    }, 200);
+  }
+  updateProgress();
+
+  // ── Amount buttons ──
+  let selectedAmount = 0;
+  const amountBtns = document.querySelectorAll('.amount-btn');
+  const customGroup = document.getElementById('customAmountGroup');
+
+  amountBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('active'));
+      amountBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      const amt = parseInt(btn.dataset.amount);
+      if (amt === 0) {
+        customGroup.style.display = 'block';
+        selectedAmount = 0;
+      } else {
+        customGroup.style.display = 'none';
+        selectedAmount = amt;
+      }
     });
   });
 
-  // FAQ Accordion
-  document.querySelectorAll('.faq-q').forEach(q => {
-    q.addEventListener('click', () => {
-      q.nextElementSibling.classList.toggle('open');
-    });
+  document.getElementById('customAmount').addEventListener('input', function() {
+    selectedAmount = parseInt(this.value) || 0;
   });
 
-  // Success Modal
+  // ── Submit ──
   document.getElementById('submitBtn').addEventListener('click', () => {
-    document.getElementById('successOverlay').style.display = 'flex';
+    const firstName = document.getElementById('firstName').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const agree    = document.getElementById('agree').checked;
+    const payMethod = document.getElementById('payMethod').value;
+    const custom   = parseInt(document.getElementById('customAmount').value) || 0;
+    const finalAmt = selectedAmount || custom;
+
+    if (!firstName)   { alert('Please enter your first name.'); return; }
+    if (!email)       { alert('Please enter your email address.'); return; }
+    if (!finalAmt)    { alert('Please select or enter a donation amount.'); return; }
+    if (!payMethod)   { alert('Please select a payment method.'); return; }
+    if (!agree)       { alert('Please confirm your donation using the checkbox.'); return; }
+
+    // Show success
+    currentRaised += finalAmt;
+    donorNum++;
+    updateProgress(finalAmt);
+    document.getElementById('successOverlay').classList.add('show');
   });
 
-  // Scroll Reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) entry.target.classList.add('visible');
+  document.getElementById('closeSuccess').addEventListener('click', () => {
+    document.getElementById('successOverlay').classList.remove('show');
+    // Reset form
+    document.getElementById('firstName').value = '';
+    document.getElementById('lastName').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('dedication').value = '';
+    document.getElementById('payMethod').value = '';
+    document.getElementById('agree').checked = false;
+    document.getElementById('customAmount').value = '';
+    customGroup.style.display = 'none';
+    amountBtns.forEach(b => b.classList.remove('active'));
+    selectedAmount = 0;
+  });
+
+  // ── FAQ accordion ──
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.faq-q').forEach(b => {
+        b.classList.remove('open');
+        b.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) {
+        btn.classList.add('open');
+        btn.nextElementSibling.classList.add('open');
+      }
     });
-  }, { threshold: 0.1 });
+  });
+
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
